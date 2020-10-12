@@ -1,0 +1,66 @@
+﻿@*@model Nhom99_Agile.Models.USER*@
+    @model Nhom99_Agile.Models.sp_LayidUser_Result
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>USER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SODT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SODT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DCHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DCHI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Allowed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Allowed)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.USER_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -258,6 +258,17 @@
     <FunctionImport Name="sp_XoaUser">
       <Parameter Name="USER_ID" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_LayUser" ReturnType="Collection(Model.sp_LayUser_Result)" />
+    <FunctionImport Name="sp_LayidLSP" ReturnType="Collection(Model.sp_LayidLSP_Result)">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LayidSP" ReturnType="Collection(Model.sp_LayidSP_Result)">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LayidUser" ReturnType="Collection(Model.sp_LayidUser_Result)">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LaySP" ReturnType="Collection(Model.sp_LaySP_Result)" />
   </EntityContainer>
   <ComplexType Name="f_slBan_Result">
     <Property Type="String" Name="MASP" Nullable="false" MaxLength="10" />
@@ -289,6 +300,50 @@
     <Property Type="String" Name="HINH" Nullable="true" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="sp_minGia_Result">
+    <Property Type="String" Name="MASP" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DVT" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NOISX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="GIA" Nullable="true" />
+    <Property Type="String" Name="MOTA" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NGAYCAPNHAT" Nullable="true" />
+    <Property Type="String" Name="MALOAISP" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="HINH" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_LayUser_Result">
+    <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="USER_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PASSWORD" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SODT" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="DCHI" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Allowed" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_LayidLSP_Result">
+    <Property Type="String" Name="MALOAISP" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="TENLOAISP" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_LayidSP_Result">
+    <Property Type="String" Name="MASP" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DVT" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NOISX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="GIA" Nullable="true" />
+    <Property Type="String" Name="MOTA" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NGAYCAPNHAT" Nullable="true" />
+    <Property Type="String" Name="MALOAISP" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="HINH" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_LayidUser_Result">
+    <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="USER_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PASSWORD" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SODT" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="DCHI" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Allowed" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_LaySP_Result">
     <Property Type="String" Name="MASP" Nullable="false" MaxLength="10" />
     <Property Type="String" Name="TENSP" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="DVT" Nullable="true" MaxLength="20" />

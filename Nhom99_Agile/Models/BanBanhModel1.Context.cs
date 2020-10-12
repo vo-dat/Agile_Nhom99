@@ -85,7 +85,12 @@ namespace Nhom99_Agile.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
-    
+
+        internal void sp_CapNhatSP(string mASP, string tENSP, string dVT, string nOISX, int? gIA, string mOTA, DateTime? nGAYCAPNHAT)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual int sp_CapNhatCTDH(string sODH, string mASP, Nullable<int> sL)
         {
             var sODHParameter = sODH != null ?
@@ -435,6 +440,43 @@ namespace Nhom99_Agile.Models
                 new ObjectParameter("USER_ID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaUser", uSER_IDParameter);
+        }
+    
+        public virtual ObjectResult<sp_LayUser_Result> sp_LayUser()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_LayUser_Result>("sp_LayUser");
+        }
+    
+        public virtual ObjectResult<sp_LayidLSP_Result> sp_LayidLSP(string id)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_LayidLSP_Result>("sp_LayidLSP", idParameter);
+        }
+    
+        public virtual ObjectResult<sp_LayidSP_Result> sp_LayidSP(string id)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_LayidSP_Result>("sp_LayidSP", idParameter);
+        }
+    
+        public virtual ObjectResult<sp_LayidUser_Result> sp_LayidUser(string id)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_LayidUser_Result>("sp_LayidUser", idParameter);
+        }
+    
+        public virtual ObjectResult<sp_LaySP_Result> sp_LaySP()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_LaySP_Result>("sp_LaySP");
         }
     }
 }

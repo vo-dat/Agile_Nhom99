@@ -194,6 +194,17 @@
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_LayidLSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_LayidSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_LayidUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_LaySP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_LayUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_maxGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_minGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -493,7 +504,7 @@
             <Parameter Name="SL" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_ThemDH">
-            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          <Parameter Name="USER_ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_ThemLSP">
             <Parameter Name="MALOAISP" Mode="In" Type="String" />
@@ -517,20 +528,31 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="sp_XoaCTDH">
-            <Parameter Name="SODH" Mode="In" Type="String" />
+          <Parameter Name="SODH" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaDH">
-            <Parameter Name="SODH" Mode="In" Type="String" />
+          <Parameter Name="SODH" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaLSP">
-            <Parameter Name="MALOAISP" Mode="In" Type="String" />
+          <Parameter Name="MALOAISP" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaSP">
-            <Parameter Name="MASP" Mode="In" Type="String" />
+          <Parameter Name="MASP" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaUser">
-            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          <Parameter Name="USER_ID" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_LayUser" ReturnType="Collection(Model.sp_LayUser_Result)" />
+          <FunctionImport Name="sp_LayidLSP" ReturnType="Collection(Model.sp_LayidLSP_Result)">
+          <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_LayidSP" ReturnType="Collection(Model.sp_LayidSP_Result)">
+          <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_LayidUser" ReturnType="Collection(Model.sp_LayidUser_Result)">
+          <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_LaySP" ReturnType="Collection(Model.sp_LaySP_Result)" />
         </EntityContainer>
         <ComplexType Name="f_slBan_Result">
           <Property Type="String" Name="MASP" Nullable="false" MaxLength="10" />
@@ -562,6 +584,50 @@
           <Property Type="String" Name="HINH" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="sp_minGia_Result">
+          <Property Type="String" Name="MASP" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TENSP" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DVT" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NOISX" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="GIA" Nullable="true" />
+          <Property Type="String" Name="MOTA" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="NGAYCAPNHAT" Nullable="true" />
+          <Property Type="String" Name="MALOAISP" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="HINH" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_LayUser_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="USER_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PASSWORD" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SODT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DCHI" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Allowed" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_LayidLSP_Result">
+          <Property Type="String" Name="MALOAISP" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TENLOAISP" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_LayidSP_Result">
+          <Property Type="String" Name="MASP" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TENSP" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DVT" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NOISX" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="GIA" Nullable="true" />
+          <Property Type="String" Name="MOTA" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="NGAYCAPNHAT" Nullable="true" />
+          <Property Type="String" Name="MALOAISP" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="HINH" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_LayidUser_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="USER_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PASSWORD" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SODT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DCHI" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Allowed" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_LaySP_Result">
           <Property Type="String" Name="MASP" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="TENSP" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="DVT" Nullable="true" MaxLength="20" />
@@ -727,6 +793,70 @@
           <FunctionImportMapping FunctionImportName="sp_XoaLSP" FunctionName="Model.Store.sp_XoaLSP" />
           <FunctionImportMapping FunctionImportName="sp_XoaSP" FunctionName="Model.Store.sp_XoaSP" />
           <FunctionImportMapping FunctionImportName="sp_XoaUser" FunctionName="Model.Store.sp_XoaUser" />
+          <FunctionImportMapping FunctionImportName="sp_LayUser" FunctionName="Model.Store.sp_LayUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_LayUser_Result">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SODT" ColumnName="SODT" />
+                <ScalarProperty Name="DCHI" ColumnName="DCHI" />
+                <ScalarProperty Name="Allowed" ColumnName="Allowed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_LayidLSP" FunctionName="Model.Store.sp_LayidLSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_LayidLSP_Result">
+                <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+                <ScalarProperty Name="TENLOAISP" ColumnName="TENLOAISP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_LayidSP" FunctionName="Model.Store.sp_LayidSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_LayidSP_Result">
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="DVT" ColumnName="DVT" />
+                <ScalarProperty Name="NOISX" ColumnName="NOISX" />
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="NGAYCAPNHAT" ColumnName="NGAYCAPNHAT" />
+                <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+                <ScalarProperty Name="HINH" ColumnName="HINH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_LayidUser" FunctionName="Model.Store.sp_LayidUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_LayidUser_Result">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SODT" ColumnName="SODT" />
+                <ScalarProperty Name="DCHI" ColumnName="DCHI" />
+                <ScalarProperty Name="Allowed" ColumnName="Allowed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_LaySP" FunctionName="Model.Store.sp_LaySP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_LaySP_Result">
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="DVT" ColumnName="DVT" />
+                <ScalarProperty Name="NOISX" ColumnName="NOISX" />
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="NGAYCAPNHAT" ColumnName="NGAYCAPNHAT" />
+                <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+                <ScalarProperty Name="HINH" ColumnName="HINH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
